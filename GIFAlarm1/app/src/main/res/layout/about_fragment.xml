@@ -14,9 +14,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text='GIF Alarm is a fun way to keep users awake. Set an alarm and watch as a fun GIF appears after the clock counts down and sounds the alarm. There is also another feature which allows the user to simply search for a GIF. Users are able to save GIFs and name them whatever they like. There is also a night-mode in the settings which allows the user to set the background to a bright blue which is helpful for keeping people awake at night. Enjoy! '
+        android:text='GIF Alarm is a fun way to keep users awake. Set an alarm and behold as a fun GIF appears after the clock counts down and sounds the alarm. There is also another feature “GIF Search” which allows the user to simply search for a GIF. Enjoy!'
         android:id="@+id/aboutMessage"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:textColor="@color/colorPrimaryDark"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
