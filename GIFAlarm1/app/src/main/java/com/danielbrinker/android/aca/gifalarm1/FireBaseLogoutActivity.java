@@ -32,7 +32,7 @@ public class FireBaseLogoutActivity extends AppCompatActivity implements View.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fb_activity_profile);
+        setContentView(R.layout.fb_logout);
 
         //initializing firebase authentication object
         firebaseAuth = FirebaseAuth.getInstance();
