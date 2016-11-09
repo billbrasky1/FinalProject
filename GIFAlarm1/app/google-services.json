@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "128581106353",
+    "firebase_url": "https://gifalarm-dd19a.firebaseio.com",
+    "project_id": "gifalarm-dd19a",
+    "storage_bucket": "gifalarm-dd19a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:128581106353:android:38197b43de6ff0c8",
+        "android_client_info": {
+          "package_name": "com.danielbrinker.android.aca.gifalarm1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "128581106353-5l7ba1crvvk26umoove0d9i3magqsih8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyPoqCOeeaG6SgxwP63aNDUhXfeeM_YE8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

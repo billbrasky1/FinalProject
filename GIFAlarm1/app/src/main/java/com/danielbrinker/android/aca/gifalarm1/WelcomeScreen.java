@@ -15,6 +15,7 @@ public class WelcomeScreen extends Activity {
 
     private Button mGoToTimer;
     private Button mGoToRefresher;
+    private Button mGoToLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,7 @@ public class WelcomeScreen extends Activity {
 
         mGoToTimer = (Button) findViewById(R.id.btnGifAlarm);
         mGoToRefresher = (Button) findViewById(R.id.btnGifSearch);
+        mGoToLogin = (Button) findViewById(R.id.btnLogin);
 
 
         mGoToTimer.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +46,19 @@ public class WelcomeScreen extends Activity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(WelcomeScreen.this, GifSearch.class);
+                startActivity(intent);
+
+
+            }
+        });
+
+
+        mGoToLogin.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(WelcomeScreen.this, FireBaseLoginActivity.class);
                 startActivity(intent);
 
 

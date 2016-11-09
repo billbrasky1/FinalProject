@@ -46,9 +46,44 @@
             </intent-filter>
         </activity>
 
+
+
+
+        <activity
+            android:name=".FireBaseSignUp"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
+
+
+
         <activity android:name=".SettingsActivity"
                   android:parentActivityName=".MainActivity" >
         </activity>
+
+
+        <activity android:name=".FireBaseLogoutActivity"
+                  android:parentActivityName=".MainActivity" >
+        </activity>
+
+
+        <activity
+            android:name=".FireBaseLoginActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
+
+
+
+
+
+
 
 
         <activity android:name=".AboutSection"
