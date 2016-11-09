@@ -47,19 +47,6 @@
         -->
 
 
-    <Button
-        android:id="@+id/btnGifAlarm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="GIF Alarm"
-        android:onClick="refresh"
-        android:textColor="@android:color/background_light"
-        android:background="@color/colorAccent"
-        android:layout_marginBottom="88dp"
-        android:layout_above="@+id/btnGifSearch"
-        android:layout_alignLeft="@+id/btnGifSearch"
-        android:layout_alignStart="@+id/btnGifSearch"/>
-
     <TextView
         android:text="Welcome to GIF Alarm"
         android:layout_width="500dp"
@@ -73,6 +60,32 @@
         android:layout_above="@+id/btnGifAlarm"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
+
+    <Button
+        android:id="@+id/btnGifAlarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Log In"
+        android:onClick="refresh"
+        android:textColor="@android:color/background_light"
+        android:background="@color/colorAccent"
+        android:layout_marginBottom="45dp"
+        android:layout_above="@+id/button"
+        android:layout_alignLeft="@+id/btnGifSearch"
+        android:layout_alignStart="@+id/btnGifSearch"/>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GIF Alarm"
+        android:onClick="refresh"
+        android:textColor="@android:color/background_light"
+        android:background="@color/colorAccent"
+        android:layout_marginBottom="46dp"
+        android:layout_above="@+id/btnGifSearch"
+        android:layout_alignLeft="@+id/btnGifAlarm"
+        android:layout_alignStart="@+id/btnGifAlarm"/>
 
 
 </RelativeLayout>
