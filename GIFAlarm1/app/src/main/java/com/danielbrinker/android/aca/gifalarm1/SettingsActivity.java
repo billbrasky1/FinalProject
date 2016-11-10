@@ -44,11 +44,8 @@ public class SettingsActivity extends AppCompatActivity {
                 // If mSound is false make it true
                 mSound = !mSound;
                 mEditor.putBoolean("sound", mSound);
-
             }
         });
-
-
     }
 
     @Override
@@ -58,7 +55,6 @@ public class SettingsActivity extends AppCompatActivity {
         // Save the settings here
         mEditor.commit();
     }
-
 
 
 }

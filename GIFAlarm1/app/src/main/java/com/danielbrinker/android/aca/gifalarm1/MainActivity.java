@@ -83,8 +83,6 @@ public class MainActivity extends AppCompatActivity {
         mUserMinutesInput = (EditText) findViewById(R.id.minutes);
         mUserSecondsInput = (EditText) findViewById(R.id.seconds);
 
-        //boolean mSound;
-
         mPrefs = getSharedPreferences("Note to self", MODE_PRIVATE);
         mSound = mPrefs.getBoolean("sound", true);
 
@@ -141,33 +139,6 @@ public class MainActivity extends AppCompatActivity {
 
         mTextViewTime.setText("00:00:00");
 
-        /*///////// First Attempt ///////////////////////////////////////
-        String userHoursInput = mUserHoursInput.getText().toString();
-        int hoursValue = Integer.parseInt(userHoursInput) * 60 * 60 *1000;
-        String userMinutesInput = mUserMinutesInput.getText().toString();
-        int minutesValue = Integer.parseInt(userMinutesInput) * 60 *1000;
-        String userSecondsInput = mUserSecondsInput.getText().toString();
-        int secondsValue = Integer.parseInt(userSecondsInput) * 1000;
-        */////////////////////////////////////////////////
-
-
-         /*///////// If statement with Integer conversion///////////////////////////////////////
-        if (!mUserSecondsInput.getText().toString().isEmpty()){
-            //convert here
-            //String userSecondsInput = mUserSecondsInput;
-            int secondsValue = Integer.parseInt(userSecondsInput) * 1000;
-        }
-         /////////////////////////////////////////////////
-        /*
-        int hours = Integer.parseInt(mUserHoursInput.getText().toString());
-        int min = Integer.parseInt(mUserMinutesInput.getText().toString());
-        int sec = Integer.parseInt(mUserSecondsInput.getText().toString());
-        int millis = (hours  * 60 * 60 * 1000) + (min * 60 *1000) + (sec  * 1000);
-        */
-
-
-        /////////////
-
 
         mBtnStart.setOnClickListener(new View.OnClickListener() {
             CounterClass timer;
@@ -178,44 +149,32 @@ public class MainActivity extends AppCompatActivity {
 
 
                     int secondsValue = Integer.parseInt(String.valueOf(mUserSecondsInput.getText())) * 1000;
-                    //convert here
-
 
                     int minutesValue = Integer.parseInt(String.valueOf(mUserMinutesInput.getText())) * 60 * 1000;
-
 
                     int hoursValue = Integer.parseInt(String.valueOf(mUserHoursInput.getText())) * 60 * 60 * 1000;
 
 
-                    timer = new CounterClass((secondsValue + minutesValue + hoursValue), 1000); ///18000 secs was originally passed in
-
-
+                    timer = new CounterClass((secondsValue + minutesValue + hoursValue), 1000);
                 }
-
                 timer.start();
             }
         });
 
 
+        
         mBtnStop.setOnClickListener(new View.OnClickListener() {
+            public CounterClass timer;
+
             @Override
             public void onClick(View v) {
-                CountDownTimer timer = null;
                 timer.cancel();
             }
         });
 
-
     }
 
-    ////////////////////////////////////
-
-
     public class CounterClass extends CountDownTimer {
-
-
-        //private boolean mSound;
-
 
         public CounterClass(long millisInFuture, long countDownInterval) {
             super(millisInFuture, countDownInterval);
@@ -235,30 +194,19 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        ///////////////////////////////////
-
-
-        //@Override
         protected void onResume() {
             this.onResume();
-            //super.onResume();
 
             mPrefs = getSharedPreferences("Note to self", MODE_PRIVATE);
-            // mSound  = mPrefs.getBoolean("sound", true);
-
-
         }
 
         //@Override
         protected void onPause() {
             this.onPause();
-            //super.onPause();
-
         }
 
         @Override
         public void onFinish() {
-            //mTextViewTime.setText("Complete");
 
             if (mSound) {
                 mSp.play(mIdBeep, 1, 1, 0, 0, 1);
@@ -266,19 +214,7 @@ public class MainActivity extends AppCompatActivity {
 
             this.start();
             refresh();
-
-
         }
-
-        /*
-
-        //@Override
-        protected void onResume() {
-            //super.onResume();
-            refresh();
-        }
-
-        */
 
         private void refresh() {
             getGifsFromGiphy();
@@ -342,7 +278,6 @@ public class MainActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-//                            toggleRefresh();
                             }
                         });
                         Log.i(TAG, "Request Failure");
@@ -376,10 +311,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
-            } else {
-                //Toast.makeText(this, "Network not available!", Toast.LENGTH_LONG).show();
             }
-
         }
 
         private boolean isNetworkAvailable() {

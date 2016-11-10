@@ -14,7 +14,7 @@ import com.google.firebase.auth.FirebaseUser;
  * Created by danielbrinker on 11/8/16.
  */
 
-public class FireBaseLogoutActivity extends AppCompatActivity implements View.OnClickListener{
+public class FireBaseLogoutActivity extends AppCompatActivity implements View.OnClickListener {
 
     //firebase auth object
     private FirebaseAuth firebaseAuth;
@@ -22,12 +22,6 @@ public class FireBaseLogoutActivity extends AppCompatActivity implements View.On
     //view objects
     private TextView textViewUserEmail;
     private Button buttonLogout;
-
-    /////////Make my own buttons///////////
-    //private Button buttonGifSearchBegin;
-    //private Button buttonGifAlarmBegin;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +33,7 @@ public class FireBaseLogoutActivity extends AppCompatActivity implements View.On
 
         //if the user is not logged in
         //that means current user will return null
-        if(firebaseAuth.getCurrentUser() == null){
+        if (firebaseAuth.getCurrentUser() == null) {
             //closing this activity
             finish();
             //starting login activity
@@ -54,7 +48,7 @@ public class FireBaseLogoutActivity extends AppCompatActivity implements View.On
         buttonLogout = (Button) findViewById(R.id.buttonLogout);
 
         //displaying logged in user name
-        textViewUserEmail.setText("Welcome "+user.getEmail());
+        textViewUserEmail.setText("Welcome " + user.getEmail());
 
         //adding listener to button
         buttonLogout.setOnClickListener(this);
@@ -64,7 +58,7 @@ public class FireBaseLogoutActivity extends AppCompatActivity implements View.On
     @Override
     public void onClick(View view) {
         //if logout is pressed
-        if(view == buttonLogout){
+        if (view == buttonLogout) {
             //logging out the user
             firebaseAuth.signOut();
             //closing activity

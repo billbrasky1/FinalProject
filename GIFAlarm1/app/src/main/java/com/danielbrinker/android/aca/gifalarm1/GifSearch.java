@@ -66,20 +66,6 @@ public class GifSearch extends AppCompatActivity {
     }
 
 
-///////////////////////////////////
-
-    /*
-    @Override
-    protected void onResume(){
-        super.onResume();
-
-        mPrefs = getSharedPreferences("Note to self", MODE_PRIVATE);
-        mSound  = mPrefs.getBoolean("sound", true);
-
-
-    }
-    */
-
     @Override
     protected void onPause() {
         super.onPause();
@@ -88,8 +74,6 @@ public class GifSearch extends AppCompatActivity {
 
 
     ///////// Options menu for selecting sound on or off and About Section ///////////////
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -190,7 +174,6 @@ public class GifSearch extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-//                            toggleRefresh();
                         }
                     });
                     Log.i(TAG, "Request Failure");

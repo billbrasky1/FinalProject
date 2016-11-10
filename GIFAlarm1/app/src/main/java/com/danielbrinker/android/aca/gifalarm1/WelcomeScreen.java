@@ -27,7 +27,6 @@ public class WelcomeScreen extends Activity {
         mGoToRefresher = (Button) findViewById(R.id.btnGifSearch);
         mGoToLogin = (Button) findViewById(R.id.btnLogin);
 
-
         mGoToTimer.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -35,7 +34,6 @@ public class WelcomeScreen extends Activity {
 
                 Intent intent = new Intent(WelcomeScreen.this, MainActivity.class);
                 startActivity(intent);
-
 
             }
         });
@@ -48,10 +46,8 @@ public class WelcomeScreen extends Activity {
                 Intent intent = new Intent(WelcomeScreen.this, GifSearch.class);
                 startActivity(intent);
 
-
             }
         });
-
 
         mGoToLogin.setOnClickListener(new View.OnClickListener() {
 
@@ -60,13 +56,9 @@ public class WelcomeScreen extends Activity {
 
                 Intent intent = new Intent(WelcomeScreen.this, FireBaseLoginActivity.class);
                 startActivity(intent);
-
-
             }
         });
 
     }
-
-
 }
 

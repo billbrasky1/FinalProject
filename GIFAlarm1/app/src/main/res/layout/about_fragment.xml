@@ -1,36 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/background_dark"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@android:color/background_dark">
+    android:paddingTop="@dimen/activity_vertical_margin">
 
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text='GIF Alarm is a fun way to keep users awake. Set an alarm and behold as a fun GIF appears after the clock counts down and sounds the alarm. There is also another feature “GIF Search” which allows the user to simply search for a GIF. Enjoy!'
         android:id="@+id/aboutMessage"
-        android:textSize="25sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="About GIF alarm"
-        android:id="@+id/textViewAboutTitle"
-        android:textSize="30sp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:text='GIF Alarm is a fun way to keep users awake. Set an alarm and behold as a fun GIF appears after the clock counts down and sounds the alarm. There is also another feature “GIF Search” which allows the user to simply search for a GIF. Enjoy!'
         android:textColor="@color/colorPrimaryDark"
+        android:textSize="25sp"/>
+
+    <TextView
+        android:id="@+id/textViewAboutTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="18dp"/>
+        android:layout_marginTop="18dp"
+        android:text="About GIF alarm"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="30sp"/>
 
 </RelativeLayout>
