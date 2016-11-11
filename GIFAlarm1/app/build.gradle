@@ -33,6 +33,10 @@ dependencies {
 
     //Added for Firebase
     compile 'com.google.firebase:firebase-auth:9.2.1'
+
+
+    //ButterKnife
+    compile 'com.jakewharton:butterknife:8.4.0'
 }
 
 //Added for Firebase

@@ -14,6 +14,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -70,6 +72,41 @@ public class MainActivity extends AppCompatActivity {
     private boolean mSound;
 
 
+
+    //  create a textWatcher member
+    private TextWatcher mTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+            // check Fields For Empty Values
+            checkFieldsForEmptyValues();
+        }
+    };
+
+    void checkFieldsForEmptyValues() {
+        Button mBtnStart = (Button) findViewById(R.id.btnStart);
+
+        String s1 = mUserInput.getText().toString();
+
+        String s2 = mUserHoursInput.getText().toString();
+        String s3 = mUserMinutesInput.getText().toString();
+        String s4 = mUserSecondsInput.getText().toString();
+
+        if (s1.equals("") || s2.equals("") || s3.equals("") || s4.equals("")) {
+            mBtnStart.setEnabled(false);
+        } else {
+            mBtnStart.setEnabled(true);
+        }
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
             AssetFileDescriptor descriptor;
 
             // Load our fx in memory ready for use
-            descriptor = assetManager.openFd("beep.ogg");
+            descriptor = assetManager.openFd("alarm13.ogg");
             mIdBeep = mSp.load(descriptor, 0);
 
 
@@ -133,7 +170,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         mBtnStart = (Button) findViewById(R.id.btnStart);
-        mBtnStop = (Button) findViewById(R.id.btnStop);
         mTextViewTime = (TextView) findViewById(R.id.textViewTime);
 
 
@@ -162,7 +198,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        
+
+        /*
         mBtnStop.setOnClickListener(new View.OnClickListener() {
             public CounterClass timer;
 
@@ -171,6 +208,7 @@ public class MainActivity extends AppCompatActivity {
                 timer.cancel();
             }
         });
+        */
 
     }
 
@@ -197,7 +235,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onResume() {
             this.onResume();
 
-            mPrefs = getSharedPreferences("Note to self", MODE_PRIVATE);
+            mPrefs = getSharedPreferences("Settings", MODE_PRIVATE);
         }
 
         //@Override

@@ -41,11 +41,11 @@
         android:cursorVisible="true"
         android:ems="10"
         android:gravity="center_horizontal"
-        android:hint="What kind of GIF's would you like to see?"
+        android:hint="Search GIFs"
         android:inputType="textPersonName"
         android:textColor="@android:color/white"
         android:textColorHint="@color/colorPrimaryDark"
         android:textColorLink="@android:color/white"
-        android:textSize="18sp"/>
+        android:textSize="25sp"/>
 
 </RelativeLayout>
