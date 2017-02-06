@@ -14,6 +14,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -70,6 +72,41 @@ public class MainActivity extends AppCompatActivity {
     private boolean mSound;
 
 
+
+    //  create a textWatcher member
+    private TextWatcher mTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+            // check Fields For Empty Values
+            checkFieldsForEmptyValues();
+        }
+    };
+
+    void checkFieldsForEmptyValues() {
+        Button mBtnStart = (Button) findViewById(R.id.btnStart);
+
+        String s1 = mUserInput.getText().toString();
+
+        String s2 = mUserHoursInput.getText().toString();
+        String s3 = mUserMinutesInput.getText().toString();
+        String s4 = mUserSecondsInput.getText().toString();
+
+        if (s1.equals("") || s2.equals("") || s3.equals("") || s4.equals("")) {
+            mBtnStart.setEnabled(false);
+        } else {
+            mBtnStart.setEnabled(true);
+        }
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,8 +119,6 @@ public class MainActivity extends AppCompatActivity {
         mUserHoursInput = (EditText) findViewById(R.id.hours);
         mUserMinutesInput = (EditText) findViewById(R.id.minutes);
         mUserSecondsInput = (EditText) findViewById(R.id.seconds);
-
-        //boolean mSound;
 
         mPrefs = getSharedPreferences("Note to self", MODE_PRIVATE);
         mSound = mPrefs.getBoolean("sound", true);
@@ -111,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
             AssetFileDescriptor descriptor;
 
             // Load our fx in memory ready for use
-            descriptor = assetManager.openFd("beep.ogg");
+            descriptor = assetManager.openFd("alarm13.ogg");
             mIdBeep = mSp.load(descriptor, 0);
 
 
@@ -135,38 +170,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         mBtnStart = (Button) findViewById(R.id.btnStart);
-        mBtnStop = (Button) findViewById(R.id.btnStop);
         mTextViewTime = (TextView) findViewById(R.id.textViewTime);
 
 
         mTextViewTime.setText("00:00:00");
-
-        /*///////// First Attempt ///////////////////////////////////////
-        String userHoursInput = mUserHoursInput.getText().toString();
-        int hoursValue = Integer.parseInt(userHoursInput) * 60 * 60 *1000;
-        String userMinutesInput = mUserMinutesInput.getText().toString();
-        int minutesValue = Integer.parseInt(userMinutesInput) * 60 *1000;
-        String userSecondsInput = mUserSecondsInput.getText().toString();
-        int secondsValue = Integer.parseInt(userSecondsInput) * 1000;
-        */////////////////////////////////////////////////
-
-
-         /*///////// If statement with Integer conversion///////////////////////////////////////
-        if (!mUserSecondsInput.getText().toString().isEmpty()){
-            //convert here
-            //String userSecondsInput = mUserSecondsInput;
-            int secondsValue = Integer.parseInt(userSecondsInput) * 1000;
-        }
-         /////////////////////////////////////////////////
-        /*
-        int hours = Integer.parseInt(mUserHoursInput.getText().toString());
-        int min = Integer.parseInt(mUserMinutesInput.getText().toString());
-        int sec = Integer.parseInt(mUserSecondsInput.getText().toString());
-        int millis = (hours  * 60 * 60 * 1000) + (min * 60 *1000) + (sec  * 1000);
-        */
-
-
-        /////////////
 
 
         mBtnStart.setOnClickListener(new View.OnClickListener() {
@@ -178,44 +185,33 @@ public class MainActivity extends AppCompatActivity {
 
 
                     int secondsValue = Integer.parseInt(String.valueOf(mUserSecondsInput.getText())) * 1000;
-                    //convert here
-
 
                     int minutesValue = Integer.parseInt(String.valueOf(mUserMinutesInput.getText())) * 60 * 1000;
-
 
                     int hoursValue = Integer.parseInt(String.valueOf(mUserHoursInput.getText())) * 60 * 60 * 1000;
 
 
-                    timer = new CounterClass((secondsValue + minutesValue + hoursValue), 1000); ///18000 secs was originally passed in
-
-
+                    timer = new CounterClass((secondsValue + minutesValue + hoursValue), 1000);
                 }
-
                 timer.start();
             }
         });
 
 
+
+        /*
         mBtnStop.setOnClickListener(new View.OnClickListener() {
+            public CounterClass timer;
             @Override
             public void onClick(View v) {
-                CountDownTimer timer = null;
                 timer.cancel();
             }
         });
-
+        */
 
     }
 
-    ////////////////////////////////////
-
-
     public class CounterClass extends CountDownTimer {
-
-
-        //private boolean mSound;
-
 
         public CounterClass(long millisInFuture, long countDownInterval) {
             super(millisInFuture, countDownInterval);
@@ -235,30 +231,19 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        ///////////////////////////////////
-
-
-        //@Override
         protected void onResume() {
             this.onResume();
-            //super.onResume();
 
-            mPrefs = getSharedPreferences("Note to self", MODE_PRIVATE);
-            // mSound  = mPrefs.getBoolean("sound", true);
-
-
+            mPrefs = getSharedPreferences("Settings", MODE_PRIVATE);
         }
 
         //@Override
         protected void onPause() {
             this.onPause();
-            //super.onPause();
-
         }
 
         @Override
         public void onFinish() {
-            //mTextViewTime.setText("Complete");
 
             if (mSound) {
                 mSp.play(mIdBeep, 1, 1, 0, 0, 1);
@@ -266,19 +251,7 @@ public class MainActivity extends AppCompatActivity {
 
             this.start();
             refresh();
-
-
         }
-
-        /*
-
-        //@Override
-        protected void onResume() {
-            //super.onResume();
-            refresh();
-        }
-
-        */
 
         private void refresh() {
             getGifsFromGiphy();
@@ -342,7 +315,6 @@ public class MainActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-//                            toggleRefresh();
                             }
                         });
                         Log.i(TAG, "Request Failure");
@@ -376,10 +348,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
-            } else {
-                //Toast.makeText(this, "Network not available!", Toast.LENGTH_LONG).show();
             }
-
         }
 
         private boolean isNetworkAvailable() {

@@ -3,7 +3,6 @@ package com.danielbrinker.android.aca.gifalarm1;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -42,8 +41,8 @@ public class GifSearch extends AppCompatActivity {
     private ImageView mImageView2;
     private Button mRefreshButton2;
     private EditText mUserInput2;
-    private SharedPreferences mPrefs;
-    private boolean mSound;
+    //private SharedPreferences mPrefs;
+   // private boolean mSound;
 
 
     @Override
@@ -124,8 +123,8 @@ public class GifSearch extends AppCompatActivity {
         refresh();
 
 
-        mPrefs = getSharedPreferences("Note to self", MODE_PRIVATE);
-        mSound = mPrefs.getBoolean("sound", true);
+        //mPrefs = getSharedPreferences("Note to self", MODE_PRIVATE);
+        //mSound = mPrefs.getBoolean("sound", true);
     }
 
     private void refresh() {
